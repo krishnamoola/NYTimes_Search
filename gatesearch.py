@@ -1,6 +1,8 @@
 '''
-Output: URL links
-Input: A specific word you are looking for in the articles of NY times
+1) Article from date function: Gives the url's and published dates of articles from the date in-putted till today.
+2)Word Search function
+	Output: URL links
+	Input: A specific word you are looking for in the articles of NY times
 '''
 
 import urllib.request
@@ -9,6 +11,18 @@ import codecs
 
 nytimes_apikey = '145d3afa81afdda88c53f2fc42c6d459:18:71835164'
 
+def articlefromdate(query):
+    api_key = nytimes_apikey
+    url= 'http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key='+api_key
+    q=query
+    final_url= url + "&begin_date=" +q
+    json_obj= urllib.request.urlopen(final_url)
+    reader = codecs.getreader("utf-8")
+    data = json.load(reader(json_obj))
+    for item in data['response']['docs']:
+		print(item['web_url'],item['pub_date']) 
+		
+		
 def word_search(query):
     api_key = nytimes_apikey
     url= 'http://api.nytimes.com/svc/search/v2/articlesearch.json?api-key='+api_key
