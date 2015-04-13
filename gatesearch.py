@@ -1,5 +1,6 @@
 '''
 1) Article from date function: Gives the url's and published dates of articles from the date in-putted till today.
+  				Date input format - (yyyymmdd)
 2)Word Search function
 	Output: URL links
 	Input: A specific word you are looking for in the articles of NY times
